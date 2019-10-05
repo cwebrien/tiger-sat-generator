@@ -52,3 +52,6 @@ def random_ksat_clauses(k: int, num_clauses: int, num_variables: int, seed: int 
         clauses.append(new_clause)
 
     return clauses
+
+
+
