@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """ tigersatgenerator.uniformksat.generator.py
-        Generates k-SAT formulae in the standard DIMACS format. """
+        Generates k-SAT formulae. """
 
 from typing import List
 import random
