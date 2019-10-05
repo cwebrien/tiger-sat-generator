@@ -3,11 +3,11 @@
 """ tigersatgenerator.dimacs.py
         Generates CNF output in standard DIMACS format. """
 
-from typing import List
+from typing import List, Set
 import datetime
 
 
-def __get_clauses_statistics(clauses: List[List[int]]) -> (int, int):
+def get_clauses_statistics(clauses: List[List[int]]) -> (int, int):
     '''
 
     Args:
@@ -16,15 +16,8 @@ def __get_clauses_statistics(clauses: List[List[int]]) -> (int, int):
     Returns:
         A tuple of (num_clauses, num_variables)
     '''
-    variable_set: dict[int, int] = {}
-
-    for clause in clauses:
-        for literal in clause:
-            variable = abs(literal)
-            if variable not in variable_set:
-                variable_set[variable] = 1
-
-    return (len(clauses), len(variable_set))
+    variable_set: Set[int] = set(abs(literal) for clause in clauses for literal in clause)
+    return len(clauses), len(variable_set)
 
 
 def print_as_dimacs_cnf(clauses: List[List[int]], comment: str = None) -> None:
@@ -47,13 +40,11 @@ def print_as_dimacs_cnf(clauses: List[List[int]], comment: str = None) -> None:
     print("c " + comment)
 
     # Print standard CNF statistics
-    (num_clauses, num_variables) = __get_clauses_statistics(clauses)
+    (num_clauses, num_variables) = get_clauses_statistics(clauses)
     print("p cnf " + str(num_clauses) + " " + str(num_variables))
 
     # Now print each clauses
     for clause in clauses:
-        line = ""
-        for literal in clause:
-            line = line + str(literal) + " "
+        line = " ".join(str(variable) for variable in clause)
         line = line + "0"  # lines are 0-terminated
         print(line)
