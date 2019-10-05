@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-""" tigersatgenerator.dimacs.py
+""" tigersatgenerator/dimacs.py
         Generates CNF output in standard DIMACS format. """
 
 from typing import List, Set
