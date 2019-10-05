@@ -4,6 +4,6 @@
         Tests for our DIMACS generator / formatter. """
 
 
-import pytest
-
-
+class TestDimacsGenerator:
+    def test_get_clauses_statistics(self):
+        assert(True)
