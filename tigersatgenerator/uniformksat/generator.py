@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-""" tigersatgenerator.uniformksat.generator.py
+""" tigersatgenerator/uniformksat/generator.py
         Generates k-SAT formulae. """
 
 from typing import List
