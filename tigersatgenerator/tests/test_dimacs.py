@@ -3,7 +3,6 @@
 """ tigersatgenerator/tests/test_dimacs.py
         Tests for our DIMACS generator / formatter. """
 
-import tigersatgenerator.uniformksat.generator as ksatgen
 
 class TestDimacsGenerator:
     def test_get_clauses_statistics(self):
