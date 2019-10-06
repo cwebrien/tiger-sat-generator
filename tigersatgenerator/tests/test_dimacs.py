@@ -9,6 +9,25 @@ import tigersatgenerator.dimacs as dimacs
 
 
 class TestDimacsGenerator:
+    def test_get_clauses_statistics(self) -> None:
+        '''
+        Ensure that we pull the correct statistics from a few test clauses
+        Returns:
+        '''
+        # Tuple of {clause list, num_clauses, num_variables}
+        test_cases = [
+            ([[1, 2, 3]], 1, 3),                   # one clause
+            ([[1, 2, 3], [4, 5, 6]], 2, 6),        # two clauses, no repeats
+            ([[1, 2, 3], [2, 3, 4]], 2, 4),        # two clauses, two repeats
+            ([[1, 2, 3], [4, 5, 6], []], 3, 6),    # three clauses, one empty, no repeats
+            ([[1, 2, 3], [-1, 2, -3]], 2, 3)       # inverted variables aren't double-counted?
+        ]
+        for case in test_cases:
+            (num_clauses, num_variables) = dimacs.get_clauses_statistics(case[0])
+            assert(num_clauses == case[1])
+            assert(num_variables == case[2])
+
+
     def test_get_dimacs_cnf(self) -> None:
         '''
         Some very basic sanity tests for the DIMACS string that is generated.

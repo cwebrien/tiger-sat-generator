@@ -9,7 +9,7 @@ import datetime
 
 def get_clauses_statistics(clauses: List[List[int]]) -> (int, int):
     '''
-
+    An unoptimized method to determine the count of clauses and variables for a given CNF clause list.
     Args:
         clauses: A clause list in CNF.
 
