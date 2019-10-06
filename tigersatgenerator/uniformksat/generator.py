@@ -9,7 +9,7 @@ import random
 
 def random_ksat_clauses(k: int, num_clauses: int, num_variables: int, seed: int = None) -> List[List[int]]:
     '''
-
+    Generates a list of lists which represent SAT clauses. Ensures that the result conforms to k-SAT.
     Args:
         k: Number of literals per clause
         num_clauses: Number of clauses to generate
@@ -17,7 +17,6 @@ def random_ksat_clauses(k: int, num_clauses: int, num_variables: int, seed: int 
         seed: Optional seed for reproducibility of results
 
     Returns: A list of clauses where each clause itself is a list
-
     '''
     if k <= 0:
         raise Exception("k-SAT requires k >= 1, although trivial for k = 1")
@@ -31,7 +30,7 @@ def random_ksat_clauses(k: int, num_clauses: int, num_variables: int, seed: int 
     clauses = []
     random.seed(seed)
 
-    for clause_count in range(1, num_clauses):
+    for clause_count in range(0, num_clauses):
         new_clause = []
         variables_used = {}    # only use a variable once in a clause
         literal_count = 0
