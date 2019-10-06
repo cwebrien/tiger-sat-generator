@@ -27,7 +27,6 @@ class TestDimacsGenerator:
             assert(num_clauses == case[1])
             assert(num_variables == case[2])
 
-
     def test_get_dimacs_cnf(self) -> None:
         '''
         Some very basic sanity tests for the DIMACS string that is generated.
